@@ -152,13 +152,6 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 
-	if use globalmenu; then
-		cd ${S}
-		tar xaf ${FILESDIR}/globalmenu.tar.xz -C extensions
-		patch -Np1 -i ${FILESDIR}/unity-globalmenu-build-support.patch
-		cd -
-	fi
-
 	linguas
 	for X in "${linguas[@]}"; do
 		# FIXME: Add support for unpacking xpis to portage
@@ -172,6 +165,21 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}"
+
+	unset EPATCH_SUFFIX EPATCH_FORCE EPATCH_EXCLUDE
+	cp ${S}/toolkit/content/widgets/dialog{,-kde}.xml
+	cp ${S}/toolkit/content/widgets/preferences{,-kde}.xml
+	cp ${S}/browser/base/content/browser{,-kde}.xul
+
+	epatch ${FILESDIR}/mozilla-kde.patch
+	epatch ${FILESDIR}/firefox-kde.patch
+
+	if use globalmenu; then
+		cd ${S}
+		tar xaf ${FILESDIR}/globalmenu.tar.xz -C extensions
+		epatch ${FILESDIR}/unity-globalmenu-build-support.patch
+		cd -
+	fi
 
 	# Allow user to apply any additional patches without modifing ebuild
 	epatch_user
@@ -215,6 +223,10 @@ src_configure() {
 	MOZILLA_FIVE_HOME="/usr/$(get_libdir)/${PN}"
 	MEXTENSIONS="default"
 
+	if use globalmenu ; then
+		MEXTENSIONS="${MEXTENSIONS},globalmenu"
+	fi
+
 	####################################
 	#
 	# mozconfig, CFLAGS and CXXFLAGS setup
@@ -245,8 +257,6 @@ src_configure() {
 	if use pgo; then
 		echo "mk_add_options PROFILE_GEN_SCRIPT='\$(PYTHON) \$(OBJDIR)/_profile/pgo/profileserver.py'" >> "${S}"/.mozconfig
 	fi
-
-	mozconfig_use_enable globalmenu
 
 	# Finalize and report settings
 	mozconfig_final
@@ -298,6 +308,10 @@ src_install() {
 
 	MOZ_MAKE_FLAGS="${MAKEOPTS}" \
 	emake DESTDIR="${D}" install || die "emake install failed"
+
+	if use globalmenu; then
+		unzip -qo -d "${D}/${MOZILLA_FIVE_HOME}/extensions/globalmenu@ubuntu.com" "${S}/${obj_dir}/dist/xpi-stage/globalmenu.xpi"
+	fi
 
 	linguas
 	for X in "${linguas[@]}"; do
