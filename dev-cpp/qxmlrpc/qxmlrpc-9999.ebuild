@@ -14,7 +14,7 @@ HOMEPAGE="http://code.google.com/p/qxmlrpc/"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="doc"
+IUSE="doc static-libs"
 
 DEPEND="doc? ( app-doc/doxygen ) "
 RDEPEND="${DEPEND}"
@@ -50,7 +50,7 @@ src_install() {
 	doins xmlrpc/{client,response,request,server{,introspection},variant}.h
 
 	dolib.so libqxmlrpc.so.1.0.0
-	dolib.a  libqxmlrpc.a
+	use static-libs && dolib.a  libqxmlrpc.a
 
 	if use doc; then
 		dohtml doc/html/*
