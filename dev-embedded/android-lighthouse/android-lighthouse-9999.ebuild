@@ -46,11 +46,11 @@ src_compile() {
 	local QT_VERSION=`grep '^# *define *QT_VERSION_STR' ${S}/src/corelib/global/qglobal.h | sed 's,^# *define *QT_VERSION_STR *"*\([^ ]*\)"$,\1,'`
 
 	# First build for armeabi v5
-	./androidconfigbuild.sh -q 1 -k 0 -n /opt/android-ndk/ -a armeabi -i /opt/necessitas/Android/Qt/${QT_VERSION}/armeabi || die
+	./android/androidconfigbuild.sh -q 1 -k 0 -n /opt/android-ndk/ -a armeabi -i /opt/necessitas/Android/Qt/${QT_VERSION}/armeabi || die
 
 	# Now for armeabi v7a
 	pushd ../${P}-armeabi-v7a
-	./androidconfigbuild.sh -q 1 -k 0 -n /opt/android-ndk/ -a armeabi-v7a -i /opt/necessitas/Android/Qt/${QT_VERSION}/armeabi-v7a || die
+	./android/androidconfigbuild.sh -q 1 -k 0 -n /opt/android-ndk/ -a armeabi-v7a -i /opt/necessitas/Android/Qt/${QT_VERSION}/armeabi-v7a || die
 	popd
 }
 
