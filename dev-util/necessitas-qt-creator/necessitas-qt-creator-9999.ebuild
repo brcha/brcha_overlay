@@ -95,6 +95,9 @@ src_prepare() {
 
 	# add rpath to make qtcreator actual find its *own* plugins
 	sed -i "/^LIBS/s:+=:& -Wl,-rpath,/opt/necessitas/QtCreator/lib :" qtcreator.pri || die
+
+	# For some reason now parallel make doesn't work (necessitas bug, surely)
+	export MAKEOPTS=${MAKEOPTS/-j?/}
 }
 
 src_configure() {
