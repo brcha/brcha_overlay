@@ -1,0 +1,11 @@
+diff -Naur conary-2.0.50.orig/conary/build/packagepolicy.py conary-2.0.50/conary/build/packagepolicy.py
+--- conary-2.0.50.orig/conary/build/packagepolicy.py	2009-10-01 17:06:18.000000000 +0200
++++ conary-2.0.50/conary/build/packagepolicy.py	2009-10-18 17:43:47.382086439 +0200
+@@ -651,6 +651,7 @@
+     invariantexceptions = [ '%(userinfodir)s/', '%(groupinfodir)s' ]
+     invariantinclusions = ['%(localstatedir)s/run/',
+                            '%(localstatedir)s/log/',
++                           '%(sysconfdir)s/conf.d/',
+                            '%(cachedir)s/']
+ 
+     def postInit(self, *args, **kwargs):
