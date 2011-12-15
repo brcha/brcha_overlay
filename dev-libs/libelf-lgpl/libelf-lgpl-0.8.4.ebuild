@@ -18,6 +18,8 @@ DEPEND="nls? ( sys-devel/gettext )"
 S="${WORKDIR}/libelf-${PV}"
 
 src_compile() {
+	sed -e 's|PACKAGE=libelf|PACKAGE=${PN}|g' -i configure{,.in} || die
+
 	econf \
 		--includedir=/usr/include/${PN} \
 		$(use_enable nls) \
@@ -40,8 +42,4 @@ src_install() {
 	dodoc ChangeLog VERSION README
 
 	mv ${D}/usr/$(get_libdir)/{libelf,${PN}}.a
-	mv ${D}/usr/$(get_libdir)/{libelf,${PN}}.so.${PV}
-	rm ${D}/usr/$(get_libdir)/libelf.*
-	ln -s libelf-lgpl.so.${PV} ${D}/usr/$(get_libdir)/libelf.so.0
-	ln -s libelf-lgpl.so.${PV} ${D}/usr/$(get_libdir)/libelf.so
 }
