@@ -33,7 +33,7 @@ IUSE=""
 # other users hopefully won't be caught without the right version of
 # a dependency.
 DEPEND="dev-lang/python
-		dev-libs/libelf
+		dev-libs/libelf-lgpl
 		dev-python/pycrypto
 		dev-libs/openssl
 		sys-libs/zlib
