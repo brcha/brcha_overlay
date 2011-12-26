@@ -1,0 +1,14 @@
+diff --git a/projectmanagers/cmake/cmakemanager.cpp b/projectmanagers/cmake/cmakemanager.cpp
+index 7fd75da..472b28d 100644
+--- a/projectmanagers/cmake/cmakemanager.cpp
++++ b/projectmanagers/cmake/cmakemanager.cpp
+@@ -657,6 +657,9 @@ QSet<QString> filterFiles(const QStringList& orig)
+         if (str.endsWith(QLatin1Char('~')) || str.endsWith(QLatin1String(".bak")))
+             continue;
+ 
++	if (str.startsWith(QLatin1String("_darcs")))
++	    continue;
++
+         ret.insert(str);
+     }
+     return ret;
