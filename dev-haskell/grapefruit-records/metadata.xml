@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<maintainer>
+		<email>haskell@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Grapefruit is a library for Functional Reactive Programming (FRP) with a focus on
+		user interfaces. FRP makes it possible to implement reactive and interactive systems
+		in a declarative style. To learn more about FRP, have a look at
+		&lt;http://haskell.org/haskellwiki/Functional_Reactive_Programming&gt;.
+		
+		This package provides a record system for use with FRP.
+	</longdescription>
+</pkgmetadata>
