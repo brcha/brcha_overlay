@@ -1,2 +1,4 @@
 # Paludis .cache
 \.cache$
+# Haskell hackport data
+\.hackport$

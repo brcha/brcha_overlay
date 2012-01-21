@@ -1,0 +1,84 @@
+diff --git a/interfaces/iprojectcontroller.h b/interfaces/iprojectcontroller.h
+index fd5638c..39c41cc 100644
+--- a/interfaces/iprojectcontroller.h
++++ b/interfaces/iprojectcontroller.h
+@@ -90,6 +90,7 @@ public:
+     Q_SCRIPTABLE virtual bool isProjectNameUsed( const QString& name ) const = 0;
+ 
+     virtual KUrl projectsBaseDirectory() const = 0;
++    virtual QStringList filteredFiles() const = 0;
+ 
+     enum FormattingOptions {
+         FormatHtml,
+diff --git a/shell/projectcontroller.cpp b/shell/projectcontroller.cpp
+index e6eda6b..348ecc4 100644
+--- a/shell/projectcontroller.cpp
++++ b/shell/projectcontroller.cpp
+@@ -900,6 +900,13 @@ KUrl ProjectController::projectsBaseDirectory() const
+                                      KUrl( QDir::homePath()+"/projects" ) );
+ }
+ 
++QStringList ProjectController::filteredFiles() const
++{
++    KConfigGroup group = Core::self()->activeSession()->config()->group( "Project Manager" );
++    return group.readEntry( "Filtered Files",
++                            ( QStringList() << "*~" << "*.bak" << "_darcs" ) );
++}
++
+ QString ProjectController::prettyFilePath(KUrl url, FormattingOptions format) const
+ {
+     IProject* project = Core::self()->projectController()->findProjectForUrl(url);
+diff --git a/shell/projectcontroller.h b/shell/projectcontroller.h
+index e21345f..3852985 100644
+--- a/shell/projectcontroller.h
++++ b/shell/projectcontroller.h
+@@ -86,6 +86,7 @@ public:
+     void setDialogProvider(IProjectDialogProvider*);
+ 
+     KUrl projectsBaseDirectory() const;
++    QStringList filteredFiles() const;
+     QString prettyFileName(KUrl url, FormattingOptions format = FormatHtml) const;
+     QString prettyFilePath(KUrl url, FormattingOptions format = FormatHtml) const;
+ 
+diff --git a/shell/settings/projectconfig.kcfg b/shell/settings/projectconfig.kcfg
+index a4d7a10..265ceec 100644
+--- a/shell/settings/projectconfig.kcfg
++++ b/shell/settings/projectconfig.kcfg
+@@ -23,5 +23,11 @@
+         <label>Save all open documents before building anything</label>
+         <whatsthis>If this option is set all open documents will be automatically saved before any build is started.</whatsthis>
+     </entry>
++    <entry name="filteredFiles" key="Filtered Files" type="StringList">
++        <default>*~,*.bak,_darcs</default>
++	<label>Files and directories you want filtered from project file list</label>
++	<whatsthis>Chooses which files will be filtered from the project file list. Hidden (ie. starting with a dot)
++	files are filtered by default.</whatsthis>
++    </entry>
+   </group>
+ </kcfg>
+diff --git a/shell/settings/projectsettings.ui b/shell/settings/projectsettings.ui
+index d4ffdbd..6dac056 100644
+--- a/shell/settings/projectsettings.ui
++++ b/shell/settings/projectsettings.ui
+@@ -53,6 +53,9 @@
+     </widget>
+    </item>
+    <item>
++    <widget class="KEditListBox" name="kcfg_filteredFiles"/>
++   </item>
++   <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+@@ -69,6 +72,11 @@
+  </widget>
+  <customwidgets>
+   <customwidget>
++   <class>KEditListBox</class>
++   <extends>QGroupBox</extends>
++   <header>keditlistbox.h</header>
++  </customwidget>
++  <customwidget>
+    <class>KUrlRequester</class>
+    <extends>QFrame</extends>
+    <header>kurlrequester.h</header>
