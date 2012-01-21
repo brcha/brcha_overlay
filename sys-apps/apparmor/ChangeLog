@@ -1,0 +1,26 @@
+# ChangeLog for sys-apps/apparmor
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*apparmor-2.7.0 (18 Dec 2011)
+
+  18 Dec 2011; Michael Palimaka (kensington) <kensington@astralcloak.net>
+  -apparmor-2.6.1.ebuild, -files/apparmor-2.6.1-makefile.patch,
+  +apparmor-2.7.0.ebuild, +files/apparmor-2.7.0-makefile.patch:
+  Version bump. Thanks to Tommy[D] for review.
+
+  03 Dec 2011; Michael Palimaka (kensington) <kensington@astralcloak.net>
+  files/apparmor-init:
+  Explicitly state printf format. Thanks to mgorny for the report and fix, and
+  Tommy[D] for the review.
+
+  24 Nov 2011; Michael Palimaka (kensington) <kensington@astralcloak.net>
+  files/apparmor-confd, files/apparmor-init:
+  Avoid bashisms in initscript. Thanks to mgorny for the report, and Tommy[D]
+  for the review.
+
+  13 Nov 2011; Michael Palimaka (kensington) <kensington@astralcloak.net>
+  +apparmor-2.6.1.ebuild, +files/apparmor-2.6.1-makefile.patch,
+  +files/apparmor-confd, +files/apparmor-init, +metadata.xml:
+  New Ebuild for bug #118779. Thanks to floppym & hwoarang for feedback.
+

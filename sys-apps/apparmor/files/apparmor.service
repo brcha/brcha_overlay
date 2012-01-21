@@ -1,0 +1,12 @@
+[Unit]
+Description=AppArmor service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/lib/apparmor/rc.apparmor.systemd start
+ExecStop=/lib/apparmor/rc.apparmor.systemd stop
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
