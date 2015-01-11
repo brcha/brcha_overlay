@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>brcha</name>
+    <description lang="en">Brcha's overlay</description>
+    <homepage>http://hub.darcs.net/brcha/brcha_overlay</homepage>
+    <owner type="person">
+      <email>brcha@gna.org</email>
+      <name>Filip Brcic</name>
+    </owner>
+    <source type="darcs">http://hub.darcs.net/brcha/brcha_overlay</source>
+  </repo>
+</repositories>
