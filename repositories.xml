@@ -10,5 +10,6 @@
       <name>Filip Brcic</name>
     </owner>
     <source type="darcs">http://hub.darcs.net/brcha/brcha_overlay</source>
+    <feed>http://hub.darcs.net/brcha/brcha_overlay/changes/atom</feed>
   </repo>
 </repositories>
