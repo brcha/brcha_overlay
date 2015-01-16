@@ -14,7 +14,7 @@ EGIT_REPO_URI="git://anongit.kde.org/scratch/trichard/dolphin-box-plugin"
 SRC_URI=""
 HOMEPAGE="http://gitweb.kde.org/scratch/trichard/dolphin-box-plugin.git"
 
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 LICENSE="GPL-3"
 DEPEND="
