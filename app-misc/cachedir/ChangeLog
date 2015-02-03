@@ -1,0 +1,6 @@
+# ChangeLog for app-misc/cachedir
+
+*cachedir-9999 (03 Feb 2015)
+
+  03 Feb 2015; Filip Brcic <brcha@gna.org> cachedir-9999.ebuild:
+  Initial import.

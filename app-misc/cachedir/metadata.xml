@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>brcha@gna.org</email>
+</maintainer>
+ <longdescription>cachedir is a tiny utility for tagging directories as cache directories, according to the http://www.bford.info/cachedir/ specification.</longdescription>
+</pkgmetadata>
