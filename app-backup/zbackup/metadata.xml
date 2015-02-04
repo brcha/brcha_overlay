@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>app-backup</herd>
+<maintainer>
+	<email>brcha@gna.org</email>
+</maintainer>
+ <longdescription>ZBackup, a versatile deduplicating backup tool</longdescription>
+<use>
+	<flag name="lzo">Enable optional LZO compression</flag>
+</use>
+</pkgmetadata>
