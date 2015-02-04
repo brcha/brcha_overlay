@@ -8,5 +8,6 @@
  <longdescription>ZBackup, a versatile deduplicating backup tool</longdescription>
 <use>
 	<flag name="lzo">Enable optional LZO compression</flag>
+	<flag name="tartool">Include tartool helper utility</flag>
 </use>
 </pkgmetadata>
