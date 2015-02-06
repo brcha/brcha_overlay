@@ -7,7 +7,7 @@ inherit eutils versionator
 
 MY_PN=${PN%%-bin}
 MY_PN_SHORT=${MY_PN%%-community}
-MY_PV="$(get_version_component_range 4-5)"
+MY_PV="$(get_version_component_range 4-6)"
 
 RESTRICT="strip"
 QA_TEXTRELS="opt/${P}/bin/libbreakgen.so"
