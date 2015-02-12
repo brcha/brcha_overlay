@@ -4,12 +4,16 @@
   <repo quality="experimental" status="unofficial">
     <name>brcha</name>
     <description lang="en">Brcha's overlay</description>
-    <homepage>http://hub.darcs.net/brcha/brcha_overlay</homepage>
+<!--    <homepage>http://hub.darcs.net/brcha/brcha_overlay</homepage> -->
+    <homepage>https://github.com/brcha/brcha_overlay</homepage>
     <owner type="person">
       <email>brcha@gna.org</email>
       <name>Filip Brcic</name>
     </owner>
-    <source type="darcs">http://hub.darcs.net/brcha/brcha_overlay</source>
-    <feed>http://hub.darcs.net/brcha/brcha_overlay/changes/atom</feed>
+    <source type="git">git://github.com/brcha/brcha_overlay.git</source>
+    <source type="git">https://github.com/brcha/brcha_overlay</source>
+    <feed>https://github.com/brcha/brcha_overlay/commits/master.atom</feed>
+<!--    <source type="darcs">http://hub.darcs.net/brcha/brcha_overlay</source>
+    <feed>http://hub.darcs.net/brcha/brcha_overlay/changes/atom</feed> -->
   </repo>
 </repositories>
