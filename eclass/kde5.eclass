@@ -35,7 +35,7 @@ EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure src_
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
 # Minimal Qt version to require for the package.
-: ${QT_MINIMAL:=5.4.0}
+: ${QT_MINIMAL:=5.4.1}
 
 # @ECLASS-VARIABLE: KDE_AUTODEPS
 # @DESCRIPTION:
@@ -112,7 +112,19 @@ case ${KDE_AUTODEPS} in
 		elif [[ ${CATEGORY} = kde-frameworks ]]; then
 			ecm_version=1.$(get_version_component_range 2).0
 		else
-			ecm_version=1.6.1
+			ecm_version=1.7.0
+		fi
+
+		if [[ ${KDE_BUILD_TYPE} = live ]]; then
+			case ${CATEGORY} in
+				kde-frameworks)
+					FRAMEWORKS_MINIMAL=9999
+				;;
+				kde-plasma)
+					FRAMEWORKS_MINIMAL=9999
+				;;
+				*) ;;
+			esac
 		fi
 
 		DEPEND+=" >=dev-libs/extra-cmake-modules-${ecm_version}"
