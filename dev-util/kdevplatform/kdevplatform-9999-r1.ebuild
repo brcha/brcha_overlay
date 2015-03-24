@@ -91,3 +91,8 @@ src_compile() {
 src_install() {
 	kde5_src_install -j1
 }
+
+src_test() {
+	einfo "In test"
+	kde5_src_test
+}
