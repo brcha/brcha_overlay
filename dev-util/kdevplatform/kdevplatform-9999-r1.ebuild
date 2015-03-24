@@ -72,6 +72,12 @@ RDEPEND="${COMMON_DEPEND}
 	!dev-util/kdevplatform:4
 "
 
+# kde_src_prepare removes test subdir which is required for successful compilation
+src_prepare() {
+	kde5_src_prepare
+	sed -e 's|#DONOTCOMPILE add_subdirectory(tests)|add_subdirectory(tests)|g' -i CMakeLists.txt
+}
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_build classbrowser)
@@ -81,18 +87,4 @@ src_configure() {
 	)
 
 	kde5_src_configure
-}
-
-# Compilation fails with multiple threads for some reason
-src_compile() {
-	kde5_src_compile -j1
-}
-
-src_install() {
-	kde5_src_install -j1
-}
-
-src_test() {
-	einfo "In test"
-	kde5_src_test
 }
