@@ -23,15 +23,10 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: ECM_MINIMAL
-# @DESCRIPTION:
-# Minimal extra-cmake-modules version to require for the package.
-: ${ECM_MINIMAL:=1.7.0}
-
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
-: ${FRAMEWORKS_MINIMAL:=5.7.0}
+: ${FRAMEWORKS_MINIMAL:=5.8.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
