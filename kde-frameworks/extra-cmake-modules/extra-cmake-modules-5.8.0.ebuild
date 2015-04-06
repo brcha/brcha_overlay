@@ -13,12 +13,14 @@ FRAMEWORKS_DIR=5.$(get_version_component_range 2)
 
 DESCRIPTION="Extra modules and scripts for CMake"
 HOMEPAGE="https://projects.kde.org/projects/kdesupport/extra-cmake-modules"
-SRC_URI="mirror://kde/stable/frameworks/${FRAMEWORKS_DIR}/${P}.tar.xz"
+SRC_URI="mirror://kde/stable/frameworks/${FRAMEWORKS_DIR}/${PN}-1.8.0.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
+
+S="${WORKDIR}/${PN}-1.8.0"
 
 DEPEND="
 	app-arch/xz-utils
