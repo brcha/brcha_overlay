@@ -4,26 +4,23 @@
 
 EAPI=5
 
-KDE_AUTODEPS="false"
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+KDE_AUTODEPS="false"
+KDE_DEBUG="false"
 
-inherit versionator cmake-utils python-any-r1
-
-FRAMEWORKS_DIR=5.$(get_version_component_range 2)
+inherit kde5 python-any-r1
 
 DESCRIPTION="Extra modules and scripts for CMake"
 HOMEPAGE="https://projects.kde.org/projects/kdesupport/extra-cmake-modules"
 SRC_URI="mirror://kde/stable/frameworks/${FRAMEWORKS_DIR}/${PN}-1.8.0.tar.xz"
 
 LICENSE="BSD"
-SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 S="${WORKDIR}/${PN}-1.8.0"
 
 DEPEND="
-	app-arch/xz-utils
 	>=dev-util/cmake-2.8.12
 	doc? (
 		${PYTHON_DEPS}
