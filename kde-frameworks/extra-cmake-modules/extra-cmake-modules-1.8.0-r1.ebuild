@@ -4,6 +4,7 @@
 
 EAPI=5
 
+KDE_AUTODEPS="false"
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit versionator cmake-utils python-any-r1
